@@ -1,0 +1,50 @@
+@mixin flex (
+    $disp: flex,
+    $dir: null,
+    $wrap: null,
+    $just: null,
+    $al-items: null) {
+        display: $disp;
+        flex-direction: $dir;
+        flex-wrap: $wrap;
+        justify-content: $just;
+    }
+    
+    @mixin e($element) {
+        &__#{$element} {
+            @content;
+        }
+    }
+
+    @mixin m($modifier) {
+        &--#{$modifier} {
+            @content;
+        }
+    }
+
+
+    //media query
+
+    @mixin mq($break) {
+        @if $break == "mobile" {
+            @media (min-width: $brk-mobile) and (max-width:$brk-tablet){
+                @content;
+            }
+        }
+        @else if $break == "tablet"{
+            @media (min-width: $brk-tablet){
+            @content;
+    }
+    }
+    @else if $break == "desktop" {
+        @media (min-width: $brk-desktop){
+            @content;
+        }
+
+    }
+
+    @else {
+        @error "No value could be for # {$break}";
+    }
+
+    }
